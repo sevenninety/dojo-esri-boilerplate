@@ -1,0 +1,9 @@
+{
+	"name": "app",
+	"description": "Boilerplate code for a simple Dojo Esri application structure",
+	"version": "0.1",
+	"main": "main",
+	"dependencies": {
+		"esri-js-api": "3.6"
+	}
+}
