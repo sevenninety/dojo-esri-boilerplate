@@ -1,0 +1,11 @@
+.mapCoordinates {
+	position: absolute;
+	top: 20px;
+	left: 100px;
+	z-index: 999;
+}
+
+.mapCoordinatesLabel {
+	color: red;
+}
+

@@ -1,0 +1,84 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	overflow: hidden;
+	font-family: "helvetica neue", helvetica, arial, sans-serif;
+	color: #333;
+}
+
+#mainWindow {
+	padding: 0px;
+}
+
+#header {
+	overflow: hidden;
+	width: 100% !important;
+	padding: 0px !important;
+	height: 34px;
+	margin: 0;
+	color: #fff;
+}
+
+#header .dijitToolbar {
+	height: 100%;
+}
+
+#title {
+	font-family: "gill sans", helvetica, arial, sans-serif;
+	color: #333;
+	font-size: 16px;
+	float: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	padding: 5px;
+}
+
+/*The top toolbar is split into three sections. */
+#toolbar-left {
+	float: left;
+	overflow: hidden;
+	width: 250px;
+}
+
+#toolbar-center {
+	float: right;
+	overflow: hidden;
+}
+
+#toolbar-right {
+	float: right;
+	padding-right: 10px;
+	width: 250px;
+}
+
+#map {
+	margin: 0;
+	padding: 0;
+}
+
+#leftPanel {
+	width: 250px;
+}
+
+.esriScalebar {
+	padding-left: 15px;
+}
+
+
+/*Border for the overview map*/
+.esriOverviewMap.ovwTR .ovwContainer {
+	border-bottom: 2px solid #999 !important;
+	border-left: 2px solid #999 !important;
+	-webkit-border-bottom-left-radius: 4px !important;
+	-moz-border-radius-bottomleft: 4px !important;
+	border-bottom-left-radius: 4px !important;
+	padding: 0 !important;
+}
+
