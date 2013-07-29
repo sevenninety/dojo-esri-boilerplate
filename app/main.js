@@ -3,7 +3,6 @@ define([
 	"dojo/parser",
 	"dojo/dom",
 	"dojo/_base/array",
-	"dojo/request/xhr",
 	"dijit/registry",
 	"esri/map",
 	"esri/geometry/Extent",
@@ -16,7 +15,7 @@ define([
 	"dijit/layout/ContentPane",
     "dijit/layout/BorderContainer", 
     "dijit/Toolbar"], 
-	function(ready, parser, dom, array, xhr, registry, Map, Extent, OverviewMap, Scalebar, MapCoords, config, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer) { 
+	function(ready, parser, dom, array, registry, Map, Extent, OverviewMap, Scalebar, MapCoords, config, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer) { 
 		ready(function() {
 			// Call the parser to create the dijit layout
 			parser.parse();
