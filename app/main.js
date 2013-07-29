@@ -10,38 +10,28 @@ define([
 	"esri/dijit/OverviewMap",
 	"esri/dijit/Scalebar",
 	"app/dijit/MapCoordinates", // A custom widget
+	"app/config",
 	"esri/layers/ArcGISTiledMapServiceLayer",
 	"esri/layers/ArcGISDynamicMapServiceLayer",
 	"dijit/layout/ContentPane",
     "dijit/layout/BorderContainer", 
     "dijit/Toolbar"], 
-	function(ready, parser, dom, array, xhr, registry, Map, Extent, OverviewMap, Scalebar, MapCoords, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer) { 
+	function(ready, parser, dom, array, xhr, registry, Map, Extent, OverviewMap, Scalebar, MapCoords, config, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer) { 
 		ready(function() {
 			// Call the parser to create the dijit layout
 			parser.parse();
 			
 			// Delare module level variables
-			var map, config;
+			var map;
 			
 			// Initialise the application
 			init();		
 			
 			function init() {
-				xhr("config.json", { 
-					handleAs: "json",
-					preventCache: true
-				}).then(function(data) {
-					console.log("config received");
-					// Store config
-					config = data;
-					// Configure Map
-					initMap();
-					// Configure UI elements
-					initUI();
-				}, function(err){
-					// Handle the error condition
-					console.error(err);
-				});
+				// Configure Map
+				initMap();
+				// Configure UI elements
+				initUI();
 			}
 			
 			// Create the map
