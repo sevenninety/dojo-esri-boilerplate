@@ -66,18 +66,16 @@ define([
 				
 				map.on("load", function(){
 		        	// Add the overview map and anything else after the map has loaded
-		          	overviewMap = new OverviewMap({
+		          	var overviewMap = new OverviewMap({
 		            	map: map,
 		            	visible: true,
 		            	attachTo: "top-right"
-		          	});		          
-		          	overviewMap.startup();
+		          	}).startup();
 		          
 		           	// Add our custom map coordinates widget
 			       	var mapCoords = new MapCoords({
 				   		map: map
-					}, dom.byId("coords"));
-				  	mapCoords.startUp();
+					}, dom.byId("coords")).startUp();
 		        });
 		        
 		        // Add scalebar
