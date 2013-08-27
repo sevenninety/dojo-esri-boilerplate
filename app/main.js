@@ -9,13 +9,14 @@ define([
 	"esri/dijit/OverviewMap",
 	"esri/dijit/Scalebar",
 	"app/dijit/MapCoordinates", // A custom widget
+	"app/tasks/Identify",
 	"app/config",
 	"esri/layers/ArcGISTiledMapServiceLayer",
 	"esri/layers/ArcGISDynamicMapServiceLayer",
 	"dijit/layout/ContentPane",
     "dijit/layout/BorderContainer", 
     "dijit/Toolbar"], 
-	function(ready, parser, dom, array, registry, Map, Extent, OverviewMap, Scalebar, MapCoords, config, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer) { 
+	function(ready, parser, dom, array, registry, Map, Extent, OverviewMap, Scalebar, MapCoords, Identify, config, ArcGISTiledMapServiceLayer, ArcGISDynamicMapServiceLayer) { 
 		ready(function() {
 			// Call the parser to create the dijit layout
 			parser.parse();
@@ -75,7 +76,12 @@ define([
 		           	// Add our custom map coordinates widget
 			       	var mapCoords = new MapCoords({
 				   		map: map
-					}, dom.byId("coords")).startUp();
+					}, dom.byId("coords")).startup();
+					
+					var identify = new Identify({
+						map: map,
+						url: "http://server.arcgisonline.com/ArcGIS/rest/services/Demographics/USA_Median_Age/MapServer"
+					}).activate();
 		        });
 		        
 		        // Add scalebar
