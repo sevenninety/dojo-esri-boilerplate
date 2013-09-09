@@ -27,8 +27,11 @@ define([
 	"dojo/dom-style",
 	"dojo/data/ObjectStore",
 	"dojo/store/Memory",
-	"dijit/form/Select"],
-    function(declare, parser, ready, lang, array, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, registry, template, domStyle, ObjectStore, Memory){
+	"dgrid/Grid",
+    "dgrid/Selection",
+    "dijit/form/Select"],
+    function(declare, parser, ready, lang, array, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, registry, template, 
+    	domStyle, ObjectStore, Memory, Grid, Selection){
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
         	// The template
         	templateString: template,
@@ -54,22 +57,52 @@ define([
             	
             	this.layersSelect.on("change", function() {
             		console.log("value: ", this.get("value"));
-            	});  
+            	});              	
+            					
+				// Create the result grid
+				this.resultsGrid = new Grid({ 
+					columns: { field: "Field", value: "Value" },
+					cellNavigation: false
+				}, this.resultsNode);
             },
             
-            results: function(results) {
+            setResults: function(results) {
             	console.log("setResults");
-            	var layerNames = array.map(results, function(result) {
-            		return { label: result.layerName, id: result.layerName };
-            	});
+            	this.results = [], layerNames = [];
             	
+            	array.forEach(results, function(result, index) {
+            		var featureAttributes = result.feature.attributes,
+            			data = [];            			
+            			
+		            for (att in featureAttributes) {
+		            	if (att !== "Shape" && att !== "OBJECTID") {
+		            		data.push({ field: att, value: featureAttributes[att] });
+		            	}
+		            }
+		            
+		            layerNames.push({
+		            	label: result.layerName + " - " + result.value, id: result.layerId
+		            });
+		            
+		            this.results.push({
+		            	layerName: result.layerName,
+		            	data: data
+		            });
+            	}, this);
+            	            	           	
             	var layerStore = new Memory({
             		data: layerNames
-            	}); 
-       	
+            	});        	
             	
             	this.layersSelect.setStore(new ObjectStore({ objectStore: layerStore }));
-            }
+            	this._renderGrid(0);
+            },
+            
+	      	_renderGrid: function(index) {
+	      		console.log("_renderGrid");
+	      		this.resultsGrid.refresh(); // https://github.com/SitePen/dgrid/issues/170
+	      		this.resultsGrid.renderArray(this.results[index].data);
+	      	}	
         });
         
         ready(function(){

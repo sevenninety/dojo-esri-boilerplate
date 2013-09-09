@@ -10,7 +10,8 @@ define([
 	"esri/tasks/IdentifyParameters",
 	"esri/symbols/SimpleFillSymbol",
 	"esri/symbols/SimpleLineSymbol"],
-    function(declare, lang, dom, domConstruct, on, Color, IdentifyResults, IdentifyTask, IdentifyParameters, SimpleFillSymbol, SimpleLineSymbol){
+    function(declare, lang, dom, domConstruct, on, Color, IdentifyResults, IdentifyTask, 
+    	IdentifyParameters, SimpleFillSymbol, SimpleLineSymbol){
         return declare([], {
         	handle: null,
         	map: null,
@@ -93,7 +94,7 @@ define([
 		        this.map.graphics.clear();
 		        feature.setSymbol(this.symbol);
 		        this.map.graphics.add(feature);
-	      	}
+	      	}   
         });
     }
 );
