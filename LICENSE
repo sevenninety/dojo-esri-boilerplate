@@ -1,17 +1,3 @@
-# dojo-esri-boilerplate
-## A sample application structure for an Esri JavaScript API Viewer.
-
-The code is a sample application structure for an Esri JavaScript API Viewer based on AMD. 
-The application includes a basic configuration structure and pattern for developing widgets.
-
-## Getting Started
- * Clone the repository using ``git clone --recursive https://github.com/sevenninety/dojo-esri-boilerplate.git``.
- * Modify app/config.js and set any configuration parameters required.
- * Look at app/main.js to see how the UI is loaded
- * Look at app/dijit to see how widgets are structured
-
-## Copyright and License
-
 The MIT License (MIT)
 
 Copyright (c) 2013 Andy Freeman
