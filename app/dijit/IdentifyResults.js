@@ -64,6 +64,11 @@ define([
 					columns: { field: "Field", value: "Value" },
 					cellNavigation: false
 				}, this.resultsNode);
+				
+				this.resultsGrid.on(".dgrid-row:click", lang.hitch(this, function(event){
+				    var row = this.resultsGrid.row(event);
+				    console.log("Row clicked:", row.id);
+				}));
             },
             
             setResults: function(results) {
@@ -79,6 +84,8 @@ define([
 		            		data.push({ field: att, value: featureAttributes[att] });
 		            	}
 		            }
+		            
+		            data.push({ field: "URL", value: "http://maps.google.co.uk"});
 		            
 		            layerNames.push({
 		            	label: result.layerName + " - " + result.value, id: result.layerId
