@@ -1,17 +1,3 @@
-
-/***************
- * CSS Includes
- ***************/
-// Anonymous function to load CSS files required for this module
-(function(){
-    var link = document.createElement("link");
-    link.type = "text/css";
-    link.rel = "stylesheet";
-    // TODO: We don't want to use the widget path really
-    link.href = require.toUrl("app/dijit/css/IdentifyResults.css");
-    document.getElementsByTagName("head").item(0).appendChild(link);
-})();
-
 // Basemap Widget
 define([
 	"dojo/_base/declare",
@@ -29,7 +15,8 @@ define([
 	"dojo/store/Memory",
 	"dgrid/Grid",
     "dgrid/Selection",
-    "dijit/form/Select"],
+    "dijit/form/Select",
+    "xstyle/css!./css/IdentifyResults.css"],
     function(declare, parser, ready, lang, array, _WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, registry, template, 
     	domStyle, ObjectStore, Memory, Grid, Selection){
         return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin], {
