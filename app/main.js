@@ -44,17 +44,14 @@ define([
 				if (configMap.initialExtent) {
 					console.log("Set initial extent");
 					var ext = configMap.initialExtent.split(",");
-					options.extent = new Extent(ext[0], ext[1], ext[2], ext[3], null);
+					options.extent = new Extent(parseFloat(ext[0]), parseFloat(ext[1]), parseFloat(ext[2]), parseFloat(ext[3]), null);
 				}
 				
 				// Create the map
 				map = this._map = new Map("map", options);
 				
-				// Add basemaps
-				array.forEach(configMap.basemaps, function(configLayer){
-					console.log("Add basemap: ", configLayer.label);
-					layers.push(createLayer(configLayer));
-				});
+				// Add basemap
+				ayers.push(createLayer(configMap.basemap));
 				
 				// Add operational Layers
 				array.forEach(configMap.operationalLayers, function(configLayer){
